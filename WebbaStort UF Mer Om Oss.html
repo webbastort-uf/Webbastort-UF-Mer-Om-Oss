@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mer om oss - WebbaStort UF. Lär känna vårt team av unga entreprenörer som brinner för webbutveckling och hjälper företag att växa online.">
+    <meta name="keywords" content="webbyrå, team, ungdomsföretag, entreprenörer, webbutveckling, örebro">
+    <title>Mer om oss - WebbaStort UF</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        /* Custom animations and styles */
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0, -30px, 0);
+            }
+            70% {
+                transform: translate3d(0, -15px, 0);
+            }
+            90% {
+                transform: translate3d(0, -4px, 0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .animate-bounce {
+            animation: bounce 1s infinite;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulseScale {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .animate-pulse-scale {
+            animation: pulseScale 1.5s ease-in-out infinite;
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+        }
+
+        .floating-passion {
+            top: -3rem;
+            left: 2rem;
+            background: linear-gradient(135deg, #3B82F6, #06B6D4);
+            animation: bounce 1s infinite;
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 768px) {
+            .floating-passion {
+                top: -2rem;
+                left: 1rem;
+                font-size: 1rem;
+                padding: 0.75rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom gradient backgrounds */
+        .bg-gradient-to-r {
+            background-image: linear-gradient(to right, var(--tw-gradient-stops));
+        }
+        
+        .bg-gradient-to-br {
+            background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+        }
+        
+        /* Backdrop blur fallback */
+        .backdrop-blur-sm {
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="fixed w-full top-0 bg-white/95 backdrop-blur-sm shadow-sm z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <div>
+                        <img src="https://i.ibb.co/hR3yQMP5/88.png" alt="WebbaStort UF Logo" class="h-8 w-8 object-contain">
+                    </div>
+                        <span class="text-xl font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent inline-block">
+                            WebbaStort UF
+                        </span>
+
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="https://sites.google.com/view/webbastort-uf/webbastort-uf-framtidens-hemsidor-av-unga-entrepren%C3%B6rer" 
+                    class="block text-lg font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent transition-colors duration-200 mt-1 hover:text-gray-600">
+                        Startsida
+                    </a>
+                    
+                    <button onclick="scrollToSection('om-oss')" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Om oss
+                    </button>
+                    <button onclick="scrollToSection('vart-team')" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Vårt team
+                    </button>
+                    <button onclick="scrollToSection('var-resa')" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Vår resa
+                    </button>
+                    <button onclick="scrollToSection('varderingar')" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Värderingar
+                    </button>
+                    <button onclick="scrollToSection('kontakt')" class="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-2 rounded-full hover:shadow-lg transition-all duration-300 font-medium flex items-center space-x-2">
+                        <span>Kontakt</span>
+                        <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                    </button>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button onclick="toggleMenu()" class="text-gray-700 hover:text-blue-600 transition-colors duration-200 p-2">
+                        <i data-lucide="menu" class="h-6 w-6" id="menu-icon"></i>
+                        <i data-lucide="x" class="h-6 w-6 hidden" id="close-icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <nav class="py-4 space-y-4 border-t border-gray-200">
+                    <a href="https://sites.google.com/view/webbastort-uf/webbastort-uf-framtidens-hemsidor-av-unga-entrepren%C3%B6rer" 
+                    class="block text-lg font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent transition-colors duration-200 mt-1 hover:text-gray-600">
+                        Startsida
+                    </a>
+
+                    <button onclick="scrollToSection('om-oss')" class="block text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Om oss
+                    </button>
+                    <button onclick="scrollToSection('vart-team')" class="block text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Vårt team
+                    </button>
+                    <button onclick="scrollToSection('var-resa')" class="block text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Vår resa
+                    </button>
+                    <button onclick="scrollToSection('varderingar')" class="block text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">
+                        Värderingar
+                    </button>
+                    <button onclick="scrollToSection('kontakt')" class="block bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-4 py-2 rounded-full text-center font-medium">
+                        Kontakt
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section - About Us -->
+    <section id="om-oss" class="pt-20 pb-16 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 overflow-hidden relative">
+        <!-- Background decoration -->
+        <div class="absolute inset-0 opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-100/20 to-cyan-100/20"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh]">
+                <!-- Left Content -->
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-2 text-blue-500 font-medium">
+                        <i data-lucide="users" class="h-5 w-5"></i>
+                        <span>Mer om oss</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                        Vi är
+                        <span class="bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent block">
+                            WebbaStort UF
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 leading-relaxed max-w-lg">
+                        Tre unga entreprenörer från Örebro som delar en gemensam passion för webbutveckling. 
+                        Vi tror på kraften i att förena ungdomlig kreativitet med professionell leverans för 
+                        att skapa digitala lösningar som verkligen gör skillnad.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="scrollToSection('vart-team')" class="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-8 py-4 rounded-full hover:shadow-xl transition-all duration-300 font-semibold flex items-center justify-center space-x-2 group">
+                            <span>Lär känna oss</span>
+                            <i data-lucide="arrow-right" class="h-5 w-5 group-hover:translate-x-1 transition-transform duration-200"></i>
+                        </button>
+                        <button onclick="scrollToSection('var-resa')" class="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-full hover:border-blue-600 hover:text-blue-600 transition-all duration-300 font-semibold text-center">
+                            Vår historia
+                        </button>
+                    </div>
+                    
+                    <!-- Company Stats -->
+                    <div class="grid grid-cols-3 gap-8 pt-8 border-t border-gray-200">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-500 scramble" data-final="2025">2025</div>
+                            <div class="text-sm text-gray-600">Grundat</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-500 scramble" data-final="3">3</div>
+                            <div class="text-sm text-gray-600">Grundare</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-500 scramble" data-final="∞">∞</div>
+                            <div class="text-sm text-gray-600">Passion</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content - Visual Element -->
+                <div class="relative">
+                    <div class="relative bg-white rounded-2xl shadow-2xl p-8 transform rotate-3 hover:rotate-1 transition-transform duration-300">
+                        <div class="absolute -top-4 -right-4 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full p-3">
+                            <i data-lucide="heart" class="h-6 w-6 text-white"></i>
+                        </div>
+                        
+                        <!-- Team representation -->
+                        <div class="space-y-6">
+                            <div class="text-center">
+                                <h3 class="text-lg font-bold text-gray-900 mb-4">Vårt team</h3>
+                            </div>
+                            
+                            <div class="flex justify-center space-x-4">
+                                <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    T
+                                </div>
+                                <div class="w-16 h-16 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    E
+                                </div>
+                                <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                                    W
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-lg p-6">
+                                <div class="text-center">
+                                    <p class="text-gray-700 font-medium mb-2">Vårt motto</p>
+                                    <p class="text-lg font-bold bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+                                        "Ung passion, professionell leverans"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating elements -->
+                    <div class="floating-element floating-passion">
+                        PASSION!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section id="vart-team" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    Möt vårt team
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Tre unga entreprenörer med olika styrkor som kompletterar varandra perfekt. 
+                    Tillsammans skapar vi digitala lösningar som både imponerar och levererar resultat.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Team Member 1 - Taher -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        T
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Taher Hasbini</h3>
+                    <p class="text-blue-600 font-medium mb-4">VD & Webbutvecklare</p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Som vår tekniska ledare och VD kombinerar Taher djup kunskap inom webbutveckling 
+                        med stark ledarskapsförmåga. Han säkerställer att varje projekt levereras med 
+                        högsta kvalitet och innovation.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Frontend & Backend utveckling
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Teknisk projektledning
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Systemarkitektur
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 - Elijah -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        E
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Elijah Michels</h3>
+                    <p class="text-orange-500 font-medium mb-4">Kommersiell Chef</p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Elijah driver våra kommersiella aktiviteter framåt med sitt naturliga 
+                        affärssinne och förmåga att förstå kunders behov. Han bygger långsiktiga 
+                        relationer och säkerställer att vi levererar värde som överträffar förväntningar.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Kundrelationer & försäljning
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Affärsstrategier
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Projektförhandlingar
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 - Wesam -->
+                <div class="bg-white p-8 rounded-2xl border border-gray-100 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1 text-center">
+                    <div class="w-24 h-24 bg-gradient-to-r from-green-500 to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-2xl mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                        W
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Wesam Dalloul</h3>
+                    <p class="text-green-600 font-medium mb-4">Marknadsförare & Försäljare</p>
+                    <p class="text-gray-600 leading-relaxed mb-6">
+                        Wesam är ledare inom marknadsföring och kommunikation. Med sin talförmåga 
+                        och sitt sinne för varumärkesbyggande hjälper han både oss 
+                        och våra kunder att sticka ut i den digitala världen.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Marknadsföring
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Varumärkesbyggande
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-700">
+                            <div class="w-2 h-2 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mr-3"></div>
+                            Content strategi
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Quote -->
+            <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl p-8 text-white text-center">
+                <i data-lucide="quote" class="h-12 w-12 mx-auto mb-6 opacity-70"></i>
+                <blockquote class="text-xl sm:text-2xl font-medium mb-6 max-w-3xl mx-auto">
+                    "Tillsammans representerar vi en unik kombination av teknisk expertis, 
+                    affärsförståelse och kreativ marknadsföring. Vår ungdom är inte bara vår 
+                    styrka – det är vår superkraft."
+                </blockquote>
+                <p class="text-blue-100 font-medium">– WebbaStort UF Team</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section id="var-resa" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    Vår resa
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Från idé till verklighet - historien om hur tre ungdomar förvandlade sin 
+                    passion för webbutveckling till ett framgångsrikt ungdomsföretag.
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-blue-500 to-cyan-400 h-full rounded-full hidden md:block"></div>
+
+                <div class="space-y-12">
+                    <!-- Timeline Item 1 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-right">
+                            <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Idéns födelse</h3>
+                                <p class="text-blue-600 font-medium mb-3">Augusti 2025</p>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Allt började med en gemensam vision: att kombinera vår tekniska 
+                                    kunskap med entreprenörsanda för att hjälpa företag att lyckas online. 
+                                    Vi insåg att vår ålder kunde vara en styrka, inte en svaghet.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-8 md:mb-0">
+                            <i data-lucide="lightbulb" class="h-6 w-6 text-white"></i>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-8">
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-8 order-2 md:order-1">
+                        </div>
+                        
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-8 md:mb-0">
+                            <i data-lucide="users" class="h-6 w-6 text-white"></i>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-8 mb-8 md:mb-0 text-center md:text-left order-1 md:order-2">
+                            <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Teambildning</h3>
+                                <p class="text-blue-600 font-medium mb-3">September 2025</p>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Taher, Elijah och Wesam kom tillsammans och upptäckte att deras 
+                                    olika kompetenser kompletterade varandra perfekt. Teknisk expertis, 
+                                    affärssinne och kreativ marknadsföring - en perfekt kombination.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-8 mb-8 md:mb-0 text-center md:text-right">
+                            <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Första projektet</h3>
+                                <p class="text-blue-600 font-medium mb-3">Oktober 2025</p>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Vårt inledande projekt presenteras här framför dina ögon. 
+                                    Det är början på något som vi länge har drömt om att skapa. 
+                                    Vi har lagt ner både tid, kreativitet och engagemang för att förverkliga idén. 
+                                    Förhoppningen är att detta bara är startskottet på många fler spännande projekt framöver.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-8 md:mb-0">
+                            <i data-lucide="rocket" class="h-6 w-6 text-white"></i>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-8">
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-8 order-2 md:order-1">
+                        </div>
+                        
+                        <div class="relative z-10 w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mb-8 md:mb-0">
+                            <i data-lucide="star" class="h-6 w-6 text-white"></i>
+                        </div>
+                        
+                        <div class="md:w-1/2 md:pl-8 mb-8 md:mb-0 text-center md:text-left order-1 md:order-2">
+                            <div class="bg-white rounded-2xl shadow-lg p-6 transform hover:scale-105 transition-transform duration-300">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Framtiden</h3>
+                                <p class="text-blue-600 font-medium mb-3">Nu & framöver</p>
+                                <p class="text-gray-600 leading-relaxed">
+                                    Idag fortsätter vi att växa och lära oss. Varje projekt är en 
+                                    möjlighet att förbättra oss och hjälpa fler företag att lyckas 
+                                    online. Vår resa har bara börjat!
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section id="varderingar" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    Våra värderingar
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Detta är principerna som vägleder oss i allt vi gör. De formar inte bara hur vi 
+                    arbetar, utan också vem vi är som företag och som personer.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Value 1 - Innovation -->
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i data-lucide="lightbulb" class="h-8 w-8 text-white mx-auto mt-2"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Innovation</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vi omfamnar ny teknologi och kreativa lösningar. Vår ungdom driver oss 
+                        att ständigt utforska nya sätt att lösa problem och skapa värde.
+                    </p>
+                </div>
+
+                <!-- Value 2 - Passion -->
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i data-lucide="heart" class="h-8 w-8 text-white mx-auto mt-2"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Passion</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vi brinner för det vi gör. Vår entusiasm och energi genomsyrar varje 
+                        projekt och inspirerar både oss själva och våra kunder.
+                    </p>
+                </div>
+
+                <!-- Value 3 - Quality -->
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i data-lucide="award" class="h-8 w-8 text-white mx-auto mt-2"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Kvalitet</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vi kompromissar aldrig med kvalitet. Varje detalj är viktig och vi 
+                        strävar efter perfektion i allt från kod till kundservice.
+                    </p>
+                </div>
+
+                <!-- Value 4 - Growth -->
+                <div class="text-center group">
+                    <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-2xl p-6 w-20 h-20 mx-auto mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                        <i data-lucide="trending-up" class="h-8 w-8 text-white mx-auto mt-2"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Tillväxt</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vi tror på kontinuerlig utveckling. Vi lär oss ständigt nya saker och 
+                        hjälper våra kunder att växa tillsammans med oss.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Values in Action -->
+            <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl p-8 lg:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+                            Värderingar i praktiken
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mt-1 flex-shrink-0"></i>
+                                <p class="text-gray-700">
+                                    Vi tar oss tid att förstå varje kunds unika behov och mål
+                                </p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mt-1 flex-shrink-0"></i>
+                                <p class="text-gray-700">
+                                    Vi kommunicerar öppet och ärligt genom hela projektprocessen
+                                </p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mt-1 flex-shrink-0"></i>
+                                <p class="text-gray-700">
+                                    Vi levererar mer än vad som förväntas och överraskar positivt
+                                </p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="check-circle" class="h-6 w-6 text-green-600 mt-1 flex-shrink-0"></i>
+                                <p class="text-gray-700">
+                                    Vi står bakom vårt arbete även efter projektets slut
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <i data-lucide="target" class="h-8 w-8 text-white"></i>
+                            </div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">Vårt löfte</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                "Vi behandlar varje projekt som om det vore vårt eget företag. 
+                                Din framgång är vår framgång, och vi gör allt för att hjälpa 
+                                dig nå dina mål."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="kontakt" class="py-20 bg-gradient-to-br from-slate-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    Vill du lära känna oss mer?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Vi älskar att träffa nya människor och berätta om vår passion för webbutveckling. 
+                    Hör av dig så berättar vi gärna mer om vem vi är och vad vi gör!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                            Ta kontakt med oss
+                        </h3>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            Vi svarar alltid snabbt och personligt. Oavsett om du vill diskutera 
+                            ett projekt eller bara vill lära känna oss bättre - tveka inte att höra av dig!
+                        </p>
+                    </div>
+
+                    <!-- Contact Methods -->
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-xl p-3">
+                                <i data-lucide="mail" class="h-6 w-6 text-white"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-gray-500">E-post</div>
+                                <a href="mailto:webbastort@gmail.com" class="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-200">
+                                    webbastort@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-xl p-3">
+                                <i data-lucide="phone" class="h-6 w-6 text-white"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-gray-500">Telefon</div>
+                                <a href="tel:+46793312826" class="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors duration-200">
+                                    +46 79 331 28 26
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-gradient-to-r from-blue-500 to-cyan-400 rounded-xl p-3">
+                                <i data-lucide="map-pin" class="h-6 w-6 text-white"></i>
+                            </div>
+                            <div>
+                                <div class="text-sm font-medium text-gray-500">Plats</div>
+                                <div class="text-lg font-semibold text-gray-900">
+                                    Örebro, Sverige
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Why Choose Us -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">Varför välja oss?</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="users" class="h-4 w-4 text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Personlig service</h4>
+                                <p class="text-gray-600 text-sm">Som ett litet team kan vi ge dig den uppmärksamhet du förtjänar</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="zap" class="h-4 w-4 text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Ung energi</h4>
+                                <p class="text-gray-600 text-sm">Vi bringer frisk entusiasm och moderna perspektiv till varje projekt</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="heart" class="h-4 w-4 text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Äkta passion</h4>
+                                <p class="text-gray-600 text-sm">Vi älskar det vi gör, och det syns i kvaliteten på vårt arbete</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-3">
+                            <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i data-lucide="trending-up" class="h-4 w-4 text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Växer tillsammans</h4>
+                                <p class="text-gray-600 text-sm">Vi bygger långsiktiga relationer och utvecklas tillsammans med våra kunder</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 text-center">
+                        <a href="mailto:webbastort@gmail.com" class="bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 inline-flex items-center space-x-2">
+                            <span>Skriv till oss</span>
+                            <i data-lucide="mail" class="h-5 w-5"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Company Info -->
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-2">
+                        <div class="p-2 rounded-lg">
+                            <img src="https://i.ibb.co/B5FsxGHM/33.png" alt="WebbaStort UF Logo" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="text-xl font-bold">WebbaStort UF</span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Unga entreprenörer som skapar framtidens hemsidor. Vi hjälper företag att växa 
+                        online genom moderna, användarvänliga webblösningar.
+                    </p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-200 cursor-pointer">
+                            <span class="text-sm font-bold">f</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-200 cursor-pointer">
+                            <span class="text-sm font-bold">ig</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors duration-200 cursor-pointer">
+                            <span class="text-sm font-bold">in</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- About Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Lär känna oss</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <button onclick="scrollToSection('vart-team')" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                Vårt team
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="scrollToSection('var-resa')" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                Vår historia
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="scrollToSection('varderingar')" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                Våra värderingar
+                            </button>
+                        </li>
+                        <li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Snabblänkar</h3>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="https://sites.google.com/view/webbastort-uf/webbastort-uf-framtidens-hemsidor-av-unga-entrepren%C3%B6rer" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                Startsida
+                            </a>
+                        </li>
+                        <li>
+                            <button onclick="scrollToSection('kontakt')" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                Kontakt
+                            </button>
+                        </li>
+                        <li>
+                            <button onclick="scrollToSection('om-oss')" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                Om oss
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Kontakta oss</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="mail" class="h-5 w-5 text-blue-400"></i>
+                            <a href="mailto:webbastort@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                webbastort@gmail.com
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="phone" class="h-5 w-5 text-blue-400"></i>
+                            <a href="tel:+46793312826" class="text-gray-300 hover:text-white transition-colors duration-200">
+                                +46 79 331 28 26
+                            </a>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i data-lucide="map-pin" class="h-5 w-5 text-blue-400"></i>
+                            <span class="text-gray-300">Örebro, Sverige</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Section -->
+            <div class="border-t border-gray-800 mt-6 pt-6 text-center">
+                <div class="text-gray-400 text-sm">
+                    © 2025 WebbaStort UF. Alla rättigheter förbehållna.
+                </div>
+            </div>
+                
+                <div class="mt-6 pt-6 border-t border-gray-800 text-center">
+                    <p class="text-gray-400 text-sm">
+                        Byggd med ❤️ av WebbaStort UF - Ung passion för webbutveckling
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Smooth scroll function
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = event.target.closest('button[onclick="toggleMenu()"]');
+            
+            if (!menuButton && !mobileMenu.contains(event.target) && !mobileMenu.classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('bg-white/98');
+                header.classList.remove('bg-white/95');
+            } else {
+                header.classList.add('bg-white/95');
+                header.classList.remove('bg-white/98');
+            }
+        });
+
+        // Scramble text effect
+        document.addEventListener("DOMContentLoaded", () => {
+            const elements = document.querySelectorAll(".scramble");
+            const randomChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&?";
+
+            const scrambleText = (el, finalText) => {
+                let iterations = 0;
+                const maxIterations = 20;
+                const interval = setInterval(() => {
+                    let scrambled = "";
+                    for (let i = 0; i < finalText.length; i++) {
+                        if (iterations > i * 2) {
+                            scrambled += finalText[i];
+                        } else {
+                            scrambled += randomChars[Math.floor(Math.random() * randomChars.length)];
+                        }
+                    }
+                    el.textContent = scrambled;
+                    iterations++;
+                    if (iterations > maxIterations) {
+                        el.textContent = finalText;
+                        clearInterval(interval);
+                    }
+                }, 50);
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const el = entry.target;
+                        const finalText = el.getAttribute("data-final");
+                        scrambleText(el, finalText);
+                    }
+                });
+            }, { threshold: 0.6 });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>
